@@ -1,0 +1,119 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #FFDB58;
+    color: #333444;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.container {
+    max-width: 1240px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.head {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head__money {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main {
+    margin-top: 100px;
+    text-align: center;
+}
+
+#cash {
+    color: #713131;
+}
+
+.trade {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    margin: 0 auto;
+    margin-top: 75px;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#trade_amount {
+    height: 40px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding-left: 15px;
+    color: white;
+    background-color: #8c8a93;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1;
+    /* Firefox */
+}
+
+#trade_btn,
+#trade_btn_stop,
+#trade_btn_get {
+    border: none;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 8px;
+    background-color: rgb(18, 18, 63);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+}
+
+#trade_btn_stop {
+    display: none;
+}
+
+#trade_process {
+    display: flex;
+    gap: 10px;
+}
+
+#plusminus {
+    font-size: 13px;
+}
+
+#trade_btn_get {
+    display: none;
+}
+
+.footer {
+    margin-top: 180px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.footer_link {
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}

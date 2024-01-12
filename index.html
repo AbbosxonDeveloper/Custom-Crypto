@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Crypto Uz</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <section class="container">
+
+        <div class="head">
+            <h1>Custom Crypto</h1>
+            <div class="head__money">
+                <h3 id="cash"></h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cash"
+                    viewBox="0 0 16 16">
+                    <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                    <path
+                        d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z" />
+                </svg>
+            </div>
+        </div>
+        <div class="trade">
+            <form id="trade_form">
+                <div id="trade_process">
+                    <p id="line"></p>
+                    <p id="plusminus"></p>
+                </div>
+                <input type="number" id="trade_amount" step="any" placeholder="amount ..." required>
+                <button id="trade_btn">trade</button>
+                <p id="warn"></p>
+            </form>
+            <button id="trade_btn_stop">stop</button>
+            <button id="trade_btn_get">collect</button>
+            
+        </div>
+        <div class="footer">
+            <p">I am so happy if you enjoyed this Crypto Simulator. Wait for new updated version here: </p>
+            <a class="footer_link" href="https://t.me/abbosxonblog">t.me/abbosxonblog</a>
+        </div>
+        </section>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
