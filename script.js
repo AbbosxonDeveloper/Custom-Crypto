@@ -9,7 +9,7 @@ let btn_stop = document.getElementById("trade_btn_stop");
 let trade_btn_get = document.getElementById("trade_btn_get");
 
 let getCash = JSON.parse(localStorage.getItem("cash"));
-if (!getCash) {
+if (!getCash | +getCash <= 0) {
     getCash = 100;
 }
 let storageCash = localStorage.setItem("cash", getCash);
@@ -40,7 +40,7 @@ trade_form.onsubmit = (e) => {
         let interval = setInterval(function () {
             // console.log('nimadir');
             let randline = Math.floor(Math.random() * 10000);
-            let rand = Number((Math.random() * 10).toFixed(2));
+            let rand = Number((Math.random() * (100 - 1 + 1)) + 1);
             if (randline % 2 !== 0) {
                 line.textContent = parseFloat((+line.textContent - line.textContent * rand / 100).toFixed(2));
                 plusminus.style.color = "red";
