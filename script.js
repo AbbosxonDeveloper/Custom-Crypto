@@ -40,13 +40,15 @@ trade_form.onsubmit = (e) => {
         let interval = setInterval(function () {
             // console.log('nimadir');
             let randline = Math.floor(Math.random() * 10000);
-            let rand = Number((Math.random() * (100 - 1 + 1)) + 1);
+            let rand = Number((Math.random() * (40 - 1 + 1)) + 1);
             if (randline % 2 !== 0) {
-                line.textContent = parseFloat((+line.textContent - line.textContent * rand / 100).toFixed(2));
+                let lineValDown = parseFloat((+line.textContent - line.textContent * rand / 100).toFixed(2));
+                line.textContent = lineValDown;
                 plusminus.style.color = "red";
                 plusminus.textContent = '-' + +(rand).toFixed(2) + "%";
             } else {
-                line.textContent = parseFloat((+line.textContent + line.textContent * rand / 100).toFixed(2));
+                let lineValUp = parseFloat((+line.textContent + line.textContent * rand / 100).toFixed(2));
+                line.textContent = lineValUp;
                 plusminus.style.color = "green";
                 plusminus.textContent = '+' + +(rand).toFixed(2) + "%";
             }
