@@ -9,7 +9,7 @@ let btn_stop = document.getElementById("trade_btn_stop");
 let trade_btn_get = document.getElementById("trade_btn_get");
 
 let getCash = JSON.parse(localStorage.getItem("cash"));
-if (!getCash | +getCash <= 0) {
+if (!getCash | +getCash <= 0.019) {
     getCash = 100;
 }
 let storageCash = localStorage.setItem("cash", getCash);
@@ -25,12 +25,13 @@ trade_form.onsubmit = (e) => {
         setTimeout(() => {
             warn.textContent = null;
         }, 2500)
-    } else if (trade_input.value == 0) {
+    } else if (trade_input.value == 0 || trade_input.value <= 0.1) {
         warn.textContent = "you cannot trade with 0";
         setTimeout(() => {
             warn.textContent = null;
         }, 2500)
     } else {
+        trade_input.style.display = "none";
         line.textContent = trade_input.value;
         localStorage.setItem("cash", JSON.stringify(+getCash - (+trade_input.value)));
         cash.textContent = (+getCash - +trade_input.value).toFixed(2);
@@ -40,7 +41,7 @@ trade_form.onsubmit = (e) => {
         let interval = setInterval(function () {
             // console.log('nimadir');
             let randline = Math.floor(Math.random() * 10000);
-            let rand = Number((Math.random() * (40 - 1 + 1)) + 1);
+            let rand = Number((Math.random() * 25));
             if (randline % 2 !== 0) {
                 let lineValDown = parseFloat((+line.textContent - line.textContent * rand / 100).toFixed(2));
                 line.textContent = lineValDown;
