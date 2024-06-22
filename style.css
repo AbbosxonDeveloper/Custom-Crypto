@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #FFDB58;
+    background-color: #FFE99A;
     color: #333444;
 }
 
@@ -38,10 +38,6 @@ input::-webkit-inner-spin-button {
     text-align: center;
 }
 
-#cash {
-    color: #713131;
-}
-
 .trade {
     display: flex;
     flex-direction: column;
@@ -58,6 +54,20 @@ form {
 }
 
 #trade_amount {
+    text-align: center;
+    height: 40px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding-left: 15px;
+    color: rgb(255, 255, 255);
+    background-color: #212b32;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.select_time {
+    text-align: center;
     height: 40px;
     font-size: 16px;
     outline: none;
@@ -65,8 +75,12 @@ form {
     border-radius: 8px;
     padding-left: 15px;
     color: white;
-    background-color: #8c8a93;
+    background-color: #212b32;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.seconds {
+    margin-bottom: 20px;
 }
 
 ::placeholder {

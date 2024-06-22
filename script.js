@@ -7,17 +7,31 @@ let warn = document.getElementById("warn");
 let plusminus = document.getElementById("plusminus");
 let btn_stop = document.getElementById("trade_btn_stop");
 let trade_btn_get = document.getElementById("trade_btn_get");
+let select_time = document.getElementById("select_time");
+let time_left = document.getElementById("time_left");
 
 let getCash = JSON.parse(localStorage.getItem("cash"));
-if (!getCash | +getCash <= 0.019) {
-    getCash = 100;
+console.log(+getCash)
+if (+getCash <= 0) {
+    getCash = 15000;
 }
 let storageCash = localStorage.setItem("cash", getCash);
 
-// console.log(+getCash)
-cash.textContent = Number(getCash).toFixed(2);
+function numberWithCommas(x) {
+    x = x.toString();
+    let pattern = /(-?\d+)(\d{3})/;
+    try {
+        while (pattern.test(x))
+            x = x.replace(pattern, "$1 $2");
+        return x;
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-// line.textContent = randline;
+let cashvalue = +getCash;
+cash.textContent = numberWithCommas(Number(getCash));
+
 trade_form.onsubmit = (e) => {
     e.preventDefault();
     if (trade_input.value > getCash) {
@@ -25,47 +39,67 @@ trade_form.onsubmit = (e) => {
         setTimeout(() => {
             warn.textContent = null;
         }, 2500)
-    } else if (trade_input.value == 0 || trade_input.value <= 0.1) {
+    } else if (trade_input.value == 0 || trade_input.value <= 0) {
         warn.textContent = "you cannot trade with 0";
         setTimeout(() => {
             warn.textContent = null;
         }, 2500)
     } else {
         trade_input.style.display = "none";
+        let lineval = +line.textContent;
         line.textContent = trade_input.value;
         localStorage.setItem("cash", JSON.stringify(+getCash - (+trade_input.value)));
-        cash.textContent = (+getCash - +trade_input.value).toFixed(2);
+        cashvalue = +getCash - +trade_input.value;
+        cash.textContent = numberWithCommas(+getCash - +trade_input.value);
+
+
 
         trade_btn.style.display = "none";
-        btn_stop.style.display = "block";
+        select_time.style.display = "none";
+
+        let countdown = +select_time.value;
         let interval = setInterval(function () {
             // console.log('nimadir');
             let randline = Math.floor(Math.random() * 10000);
             let rand = Number((Math.random() * 25));
+
+            time_left.textContent = countdown + " seconds";
+            if (countdown <= 1) {
+                time_left.textContent = countdown + " second";
+            }
+            if (countdown == 0) {
+                setTimeout(() => {
+                    time_left.textContent = ""
+                }, 1000)
+            }
+            countdown--;
             if (randline % 2 !== 0) {
-                let lineValDown = parseFloat((+line.textContent - line.textContent * rand / 100).toFixed(2));
+                let lineValDown = parseFloat((+line.textContent - line.textContent * rand / 100).toFixed(0));
                 line.textContent = lineValDown;
+                lineval = lineValDown;
                 plusminus.style.color = "red";
-                plusminus.textContent = '-' + +(rand).toFixed(2) + "%";
+                plusminus.textContent = numberWithCommas('-' + +(rand).toFixed(0)) + "%";
             } else {
-                let lineValUp = parseFloat((+line.textContent + line.textContent * rand / 100).toFixed(2));
+                let lineValUp = parseFloat((+line.textContent + line.textContent * rand / 100).toFixed(0));
                 line.textContent = lineValUp;
+                lineval = lineValUp;
                 plusminus.style.color = "green";
-                plusminus.textContent = '+' + +(rand).toFixed(2) + "%";
+                plusminus.textContent = numberWithCommas('+' + +(rand).toFixed(0)) + "%";
             }
         }, 1000)
 
-        btn_stop.onclick = () => {
-            btn_stop.style.display = "none";
-            clearInterval(interval, 0);
-            trade_btn_get.style.display = "block";
+        setTimeout(() => {
+            clearInterval(interval, 0)
+            console.log(lineval)
+            setTimeout(() => {
+                trade_btn_get.style.display = "block";
+            }, 1200)
 
+            console.log(lineval, cashvalue)
             trade_btn_get.onclick = () => {
-                // 
-                localStorage.setItem("cash", JSON.stringify(+cash.textContent + +line.textContent));
-                // console.log(+line.textContent);
+                localStorage.setItem("cash", JSON.stringify(cashvalue + lineval));
                 location.reload();
             }
-        }
+        }, select_time.value * 1000 + 1000)
     }
 }

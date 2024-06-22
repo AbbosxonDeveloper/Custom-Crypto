@@ -30,16 +30,22 @@
                     <p id="line"></p>
                     <p id="plusminus"></p>
                 </div>
-                <input type="number" id="trade_amount" step="any" placeholder="amount ..." required>
+                <input type="number" id="trade_amount" step="any" placeholder="enter money..." required>
+                <select class="select_time" id="select_time" required>
+                    <option value="">time for trading</option>
+                    <option value="5">5 seconds</option>
+                    <option value="15">15 seconds</option>
+                    <option value="30">30 seconds</option>
+                </select>
+                <h3 id="time_left" style="margin: 0; text-align: center;"></h3>
                 <button id="trade_btn">trade</button>
                 <p id="warn"></p>
             </form>
-            <button id="trade_btn_stop">stop</button>
             <button id="trade_btn_get">collect</button>
 
         </div>
         <div class="footer">
-            <p>If you've found an error, tell me in Telegram: <a href="https://t.me/abbos_khonn">@abbos_khonn</a>.</p>
+            <p>If you've found an error, let me know in Telegram: <a href="https://t.me/abbos_khonn">@abbos_khonn</a>.</p>
             <p> Follow me for new updated version on my Telegram Channel here: <a
                     href="https://t.me/abbosxonblog">Abboskhon's Channel</a></p>
         </div>
